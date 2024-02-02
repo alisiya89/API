@@ -6,12 +6,11 @@ import requests
 
 map_file = ''
 delta="0.002"
+lon="37.530887"
+lat="55.703118"
 
-def create(lon="37.530887", lat="55.703118"):
+def create():
     global map_file
-    lon = lon
-    lat = lat
-
     params = {
         "ll": ",".join([lon, lat]),
         "spn": ",".join([delta, delta]),
@@ -70,7 +69,9 @@ while run:
                     "pos"]
                 print(toponym)
                 coords = toponym.split()
-                create(coords[0], coords[1])
+                lon = coords[0]
+                lat = coords[1]
+                create()
                 text=''
             else:
                 enter = False
